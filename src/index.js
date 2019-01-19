@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Root from "root";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import App from 'components/App';
+
+// Root component is helper for testing (lets redux setup be easily re-used in test files)
+ReactDOM.render(
+    <Root >
+        <BrowserRouter>
+            <Route path="/" component={App} />
+        </BrowserRouter>
+    </Root>, 
+    document.querySelector('#root')
+);
